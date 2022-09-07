@@ -20,7 +20,7 @@ public class Srp {
         final CalculadoraBonificacao calculadoraBonificacao = new CalculadoraBonificacao();
 
         colaboradores.forEach(colaborador -> {
-            System.out.printf("O colaborador %s tem bonificação de %f%n",
+            System.out.printf("O colaborador %s tem salario de %f%n",
                     colaborador.nome(), calculadoraBonificacao.calculaBonificacao(colaborador)).println();
         });
     }

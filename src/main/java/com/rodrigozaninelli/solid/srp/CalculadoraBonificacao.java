@@ -4,15 +4,10 @@ public class CalculadoraBonificacao {
 
     public double calculaBonificacao(Colaborador colaborador){
 
-        double salarioBase = colaborador.salario();
+        final var salarioBase = colaborador.salario();
+        final var cargo = colaborador.cargo();
 
-        return switch (colaborador.cargo()){
+        return salarioBase + cargo.calculaBonificacao(salarioBase);
 
-            case GERENTE -> salarioBase * 0.08;
-            case ANALISTA -> salarioBase * 0.05;
-            case DESENVOLVEDOR -> salarioBase * 0.01;
-            case CEO -> salarioBase * 0.1;
-            default -> throw new IllegalArgumentException("Cargo não reconhecido!");
-        };
     }
 }
