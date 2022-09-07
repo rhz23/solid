@@ -4,18 +4,15 @@ public class CalculadoraBonificacao {
 
     public double calculaBonificacao(Colaborador colaborador){
 
-        double bonificacao = 0;
         double salarioBase = colaborador.salario();
 
-        if (colaborador.cargo() == Cargo.GERENTE) {
-            bonificacao = salarioBase * 0.1;
-        }
-        if (colaborador.cargo() == Cargo.ANALISTA) {
-            bonificacao = salarioBase * 0.05;
-        }
-        if (colaborador.cargo() == Cargo.DESENVOLVEDOR) {
-            bonificacao = salarioBase * 0.01;
-        }
-        return bonificacao;
+        return switch (colaborador.cargo()){
+
+            case GERENTE -> salarioBase * 0.08;
+            case ANALISTA -> salarioBase * 0.05;
+            case DESENVOLVEDOR -> salarioBase * 0.01;
+            case CEO -> salarioBase * 0.1;
+            default -> throw new IllegalArgumentException("Cargo não reconhecido!");
+        };
     }
 }
